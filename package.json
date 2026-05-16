@@ -1,0 +1,13 @@
+{
+  "name": "procurement-app",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["apps/backend", "apps/client"],
+  "scripts": {
+    "install:all": "npm install --workspaces",
+    "dev:backend": "npm --workspace apps/backend run start:dev",
+    "dev:client": "npm --workspace apps/client run dev",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspace apps/backend"
+  }
+}

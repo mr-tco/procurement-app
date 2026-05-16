@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum IndentStatus {
+  OPEN
+  APPROVED
+  REJECTED
+}
+
+enum RfqStatus {
+  DRAFT
+  SENT
+  CLOSED
+}
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  fullName   String
+  password   String
+  role       Role     @default(USER)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  indents    Indent[] @relation("IndentRequestedBy")
+}
+
+model Item {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  unitPrice   Decimal  @db.Decimal(10, 2)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  indents     Indent[]
+  rfqs        Rfq[]
+}
+
+model Vendor {
+  id           String   @id @default(uuid())
+  name         String
+  contactEmail String?
+  phone        String?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  rfqs         Rfq[]
+}
+
+model Indent {
+  id            String       @id @default(uuid())
+  requestNumber String       @unique
+  quantity      Int
+  status        IndentStatus @default(OPEN)
+  requestedAt   DateTime     @default(now())
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  itemId        String
+  requestedById String
+  item          Item         @relation(fields: [itemId], references: [id])
+  requestedBy   User         @relation("IndentRequestedBy", fields: [requestedById], references: [id])
+  mis           Mi[]
+}
+
+model Mi {
+  id          String   @id @default(uuid())
+  number      String   @unique
+  receivedQty Int
+  receivedAt  DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  indentId    String
+  indent      Indent   @relation(fields: [indentId], references: [id])
+}
+
+model Rfq {
+  id          String    @id @default(uuid())
+  number      String    @unique
+  quantity    Int
+  quotedPrice Decimal   @db.Decimal(10, 2)
+  status      RfqStatus @default(DRAFT)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  itemId      String
+  vendorId    String
+  item        Item      @relation(fields: [itemId], references: [id])
+  vendor      Vendor    @relation(fields: [vendorId], references: [id])
+}

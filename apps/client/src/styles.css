@@ -1,0 +1,186 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f6f7f9;
+  color: #1f2933;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: #1f5f8b;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 1px solid #9aa8b5;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1f2933;
+  cursor: pointer;
+  min-height: 36px;
+  padding: 7px 12px;
+}
+
+button[type='submit'] {
+  background: #1f5f8b;
+  border-color: #1f5f8b;
+  color: #ffffff;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+input,
+select {
+  border: 1px solid #bac4cf;
+  border-radius: 6px;
+  min-height: 38px;
+  padding: 8px 10px;
+  width: 100%;
+}
+
+.app-shell {
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 18px;
+}
+
+.top-nav {
+  align-items: center;
+  border-bottom: 1px solid #d7dee5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+}
+
+.module-page {
+  display: grid;
+  gap: 16px;
+}
+
+.module-header,
+.section-title,
+.form-actions,
+.row-actions {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.module-header,
+.section-title {
+  justify-content: space-between;
+}
+
+.module-header h2,
+.section-title h3 {
+  margin: 0;
+}
+
+.module-header p {
+  color: #5f6f7d;
+  margin: 4px 0 0;
+}
+
+.form-panel,
+.table-panel {
+  background: #ffffff;
+  border: 1px solid #d7dee5;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.crud-form {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  margin-top: 14px;
+}
+
+.crud-form label {
+  color: #4a5967;
+  display: grid;
+  font-size: 14px;
+  gap: 6px;
+}
+
+.checkbox-field {
+  align-content: end;
+  grid-template-columns: 1fr auto;
+}
+
+.checkbox-field input {
+  height: 20px;
+  min-height: 20px;
+  width: 20px;
+}
+
+.form-actions {
+  align-self: end;
+  flex-wrap: wrap;
+}
+
+.notice,
+.message {
+  background: #eef6fb;
+  border: 1px solid #c6dfef;
+  border-radius: 6px;
+  margin: 12px 0 0;
+  padding: 10px 12px;
+}
+
+.message {
+  margin: 0;
+}
+
+.error {
+  background: #fff1f0;
+  border-color: #f1b8b5;
+  color: #9b2c2c;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  min-width: 760px;
+  width: 100%;
+}
+
+th,
+td {
+  border-bottom: 1px solid #e1e7ec;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: #4a5967;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.row-actions {
+  flex-wrap: nowrap;
+}
