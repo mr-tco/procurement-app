@@ -27,7 +27,7 @@ export default function App(): JSX.Element {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/dashboard" element={<PrivateLayout><DashboardPage /></PrivateLayout>} />
       <Route path="/items" element={<PrivateLayout><ModuleListPage title="Items" endpoint="items" /></PrivateLayout>} />
-      <Route path="/vendors" element={<PrivateLayout><ModuleListPage title="Vendors4444" endpoint="vendors" /></PrivateLayout>} />
+      <Route path="/vendors" element={<PrivateLayout><ModuleListPage title="Vendors" endpoint="vendors" /></PrivateLayout>} />
       <Route path="/indents" element={<PrivateLayout><ModuleListPage title="Indents" endpoint="indents" /></PrivateLayout>} />
       <Route path="/mis" element={<PrivateLayout><ModuleListPage title="MI" endpoint="mis" /></PrivateLayout>} />
       <Route path="/rfqs" element={<PrivateLayout><ModuleListPage title="RFQ" endpoint="rfqs" /></PrivateLayout>} />

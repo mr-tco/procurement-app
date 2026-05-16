@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 export function DashboardPage(): JSX.Element {
   const navigate = useNavigate();
   const fullName = localStorage.getItem('fullName') ?? 'User';
-  const role666 = localStorage.getItem('role');
+  const role = localStorage.getItem('role');
 
   return (
     <div>
-      <h2>Welcome123, {fullName}</h2>
-      <p>Rolerrrrrrr: {role666}</p>
+      <h2>Welcome, {fullName}</h2>
+      <p>Role: {role}</p>
       <button
         onClick={() => {
           localStorage.clear();
